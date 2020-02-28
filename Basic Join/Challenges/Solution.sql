@@ -1,0 +1,27 @@
+/*
+Enter your query here.
+Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
+*/
+SELECT H.HACKER_ID,
+       H.NAME,
+       COUNT(C.CHALLENGE_ID) AS TOTAL
+FROM HACKERS H,
+     CHALLENGES C
+WHERE H.HACKER_ID=C.HACKER_ID
+GROUP BY H.HACKER_ID,
+         H.NAME
+HAVING COUNT(C.CHALLENGE_ID) IN
+  (SELECT MAX(TOTAL)
+   FROM
+     (SELECT COUNT(*) AS TOTAL
+      FROM CHALLENGES
+      GROUP BY HACKER_ID))
+OR COUNT(C.CHALLENGE_ID) IN
+  (SELECT TOTAL
+   FROM
+     (SELECT COUNT(*) AS TOTAL
+      FROM CHALLENGES
+      GROUP BY HACKER_ID)
+   GROUP BY TOTAL
+   HAVING COUNT(TOTAL)=1)
+ORDER BY COUNT(C.CHALLENGE_ID) DESC, H.HACKER_ID;
