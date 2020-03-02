@@ -21,6 +21,7 @@
 ---
 
 ## Basic Select
+
 -[Employee Names](https://github.com/snehalmastud/mySqlSolution-HackerRank/blob/master/Basic%20Select/Employee%20Names/Solution.sql)
 
 -[Employee Salaries](https://github.com/snehalmastud/mySqlSolution-HackerRank/blob/master/Basic%20Select/Employee%20Salaries/Solution.sql)
